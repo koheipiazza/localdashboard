@@ -8,10 +8,13 @@ import asyncio
 
 app = FastAPI()
 
-# CORS設定
+# CORS設定を更新
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[
+        "http://localhost:3000",  # ローカル開発用
+        "https://*.netlify.app",  # Netlifyのドメイン
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
