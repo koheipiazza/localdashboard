@@ -13,7 +13,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:3000",  # ローカル開発用
-        "https://*.netlify.app",  # Netlifyのドメイン
+        "https://chiikinoima.netlify.app",  # Netlifyのドメイン
     ],
     allow_credentials=True,
     allow_methods=["*"],
