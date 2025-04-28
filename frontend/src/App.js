@@ -14,6 +14,11 @@ import {
 } from '@chakra-ui/react';
 import axios from 'axios';
 
+// APIのURLを環境に応じて切り替え
+const API_URL = process.env.NODE_ENV === 'production'
+  ? 'https://localdashboard.onrender.com'  // Renderのデプロイ済みURL
+  : 'http://localhost:8000';
+
 function App() {
   const [feeds, setFeeds] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -25,7 +30,7 @@ function App() {
   useEffect(() => {
     const fetchFeeds = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/api/feeds');
+        const response = await axios.get(`${API_URL}/api/feeds`);
         setFeeds(response.data);
         setLoading(false);
       } catch (err) {
